@@ -11,7 +11,7 @@ import javax.sql.DataSource;
  * @date 2018/4/23
  */
 @Configuration
-@ComponentScan({"top.youngcoding.shiro.demo.**.service","top.youngcoding.shiro.demo.**.dao"})
+@ComponentScan({"top.youngcoding.shiro.demo.ch03"})
 @Import({MybatisConfig.class, ShiroConfig.class})
 public class RootConfig {
 

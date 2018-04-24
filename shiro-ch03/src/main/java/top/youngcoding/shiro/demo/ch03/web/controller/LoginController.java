@@ -30,6 +30,11 @@ public class LoginController {
             e.printStackTrace();
             throw e;
         }
+        return "redirect:success";
+    }
+
+    @GetMapping("/success")
+    public String success(){
         return "success";
     }
 }

@@ -21,7 +21,7 @@ public class RetryLimitAndAESCredentialsMatcher extends HashedCredentialsMatcher
     private static final String DEFAULT_CACHE_KEY = "passwordRetryLimitCache";
     private static final String DEFAULT_CACHE_PREFIX = "passwordRetry:";
     private static final String DEFAULT_ENCODING = "UTF-8";
-    private static final int DEFAULT_MAX_RETRY_TIMES = 5;
+    private static final int DEFAULT_MAX_RETRY_TIMES = 15;
     private Cache<String, AtomicInteger> passwordRetryLimitCache;
 
     public RetryLimitAndAESCredentialsMatcher(CacheManager cacheManager) {

@@ -9,8 +9,9 @@
 <html>
 <head>
     <title>Title</title>
+    <script src="js/test.js" type="text/javascript"></script>
 </head>
 <body>
-login success!
+login success!登录成功！
 </body>
 </html>

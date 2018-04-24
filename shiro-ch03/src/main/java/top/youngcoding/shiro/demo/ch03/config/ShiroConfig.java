@@ -32,6 +32,7 @@ public class ShiroConfig {
         factoryBean.setSecurityManager(securityManager);
 
         Map<String, String> filterDefenitions = new LinkedHashMap<>();
+        filterDefenitions.put("/login","anon");
         filterDefenitions.put("/index", "anon");
         filterDefenitions.put("/static/**", "anon");
         filterDefenitions.put("/js/**", "anon");

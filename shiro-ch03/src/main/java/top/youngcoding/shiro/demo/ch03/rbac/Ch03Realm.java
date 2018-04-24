@@ -60,8 +60,11 @@ public class Ch03Realm extends AuthorizingRealm {
         if (user == null)
             throw new UnknownAccountException("用户名或密码错误");
 
+        String salt = user.getSalt();
+        SimpleAuthenticationInfo authcInfo = salt == null ?
+                new SimpleAuthenticationInfo(user.getUsername(), user.getPassword(), getName())
+                : new SimpleAuthenticationInfo(user.getUsername(), user.getPassword(), ByteSource.Util.bytes(salt), getName());
 
-        SimpleAuthenticationInfo authcInfo = new SimpleAuthenticationInfo(user.getUsername(), user.getPassword(), ByteSource.Util.bytes(user.getSalt()), getName());
         return authcInfo;
     }
 }
