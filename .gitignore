@@ -10,7 +10,7 @@
 .springBeans
 .sts4-cache
 
-.mvn
+.mvn/
 *.userlibraries
 mvnw
 mvnw.cmd
@@ -20,6 +20,8 @@ mvnw.cmd
 *.iws
 *.iml
 *.ipr
+
+target/*
 
 ### NetBeans ###
 /nbproject/private/

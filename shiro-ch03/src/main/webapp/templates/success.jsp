@@ -13,5 +13,7 @@
 </head>
 <body>
 login success!登录成功！
+<p/>
+<a href="/index">回到首页</a>
 </body>
 </html>

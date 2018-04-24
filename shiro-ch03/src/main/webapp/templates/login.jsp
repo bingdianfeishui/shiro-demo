@@ -11,11 +11,13 @@
     <title>Title</title>
 </head>
 <body>
+<span style="color:red">${msg}</span>
+<p/>
 <form action="/login" method="post">
 
-    用户名<<input type="text" name="username" id="username"/>
+    用户名<input type="text" name="username" id="username"/>
     <p/>
-    密码<input type="password" name="password" id="password">
+    密 &nbsp;&nbsp;码 <input type="password" name="password" id="password">
     <p/>
     <input type="submit" name="提交">
 </form>

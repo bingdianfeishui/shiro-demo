@@ -1,7 +1,19 @@
 package top.youngcoding.shiro.demo.ch03.util;
 
+import org.apache.commons.lang3.ClassPathUtils;
+import org.apache.shiro.util.ByteSource;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.StaticApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import top.youngcoding.shiro.demo.ch03.config.MybatisConfig;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,22 +27,27 @@ import static org.junit.Assert.*;
  * @author liy
  * @date 2018-4-24
  */
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = AESUtil.class)
+@ComponentScan(basePackages = "top.youngcoding.shiro.demo.ch03.util")
+@PropertySource("classpath:aes.properties")
 public class TokenUtilTest {
 
-    @Before
-    public void init() throws IOException {
-        Properties properties = new Properties();
-        properties.load(new FileInputStream(new File("D:\\Documents and Settings\\60238\\Documents\\IdeaProjects\\shiro-demo\\shiro-ch03\\src\\main\\resources\\aes.properties")));
-        AESUtil aesUtil =new AESUtil();
-        aesUtil.setKey_seed(properties.getProperty("aes_key_seed"));
-        aesUtil.init();
+    @Value("${aes_key_seed}")
+    private String aesKeySeed;
 
-    }
+//    @Before
+//    public void init() throws IOException {
+//        AESUtil aesUtil = new AESUtil();
+//        aesUtil.setKey_seed(aesKeySeed);
+//        aesUtil.init();
+//
+//    }
 
     @Test
-    public void token(){
-            TokenUtil.passwordEncrypt("admin", "admin", "68E45C4D");
-        TokenUtil.passwordEncrypt("tom", "123", "BC12A435");
-        TokenUtil.passwordEncrypt("jerry", "321", "7AEAA0A4");
+    public void token() {
+        TokenUtil.passwordEncrypt("admin", "admin", ByteSource.Util.bytes("68E45C4D"));
+        TokenUtil.passwordEncrypt("tom", "123", ByteSource.Util.bytes("BC12A435"));
+        TokenUtil.passwordEncrypt("jerry", "123", ByteSource.Util.bytes("7AEAA0A4"));
     }
 }

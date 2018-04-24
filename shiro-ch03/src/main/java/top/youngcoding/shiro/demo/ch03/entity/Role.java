@@ -13,5 +13,6 @@ import java.util.Set;
 public class Role {
     private Integer id;
     private String name;
+    private String type;
     private Set<Permission> permissions;
 }

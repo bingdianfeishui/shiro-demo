@@ -18,6 +18,6 @@ import static javax.persistence.FetchType.EAGER;
 public class Permission {
     private Integer id;
     private String name;
-    private boolean enable;
+    private String desc;
 //    private Resource resource;
 }

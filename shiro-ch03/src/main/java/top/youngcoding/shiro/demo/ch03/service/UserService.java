@@ -1,6 +1,8 @@
 package top.youngcoding.shiro.demo.ch03.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import top.youngcoding.shiro.demo.ch03.dao.UserMapper;
 import top.youngcoding.shiro.demo.ch03.entity.User;
 
 /**
@@ -9,11 +11,10 @@ import top.youngcoding.shiro.demo.ch03.entity.User;
  */
 @Service
 public class UserService {
+    @Autowired
+    UserMapper userMapper;
+
     public User selectByUsername(String username) {
-        User user = new User();
-        user.setId(1L);
-        user.setUsername(username);
-        user.setPassword("a19ce082fe9f17c23086e539b3ebca390f2019e53cdcd5e37345cbf6ebc9c3bd9cdf84ae5189a3af5f7c32176398d26d");
-        return user;
+        return userMapper.selectByUsername(username);
     }
 }

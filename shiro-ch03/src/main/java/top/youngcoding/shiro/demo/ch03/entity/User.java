@@ -11,9 +11,11 @@ import java.util.Set;
 @Data
 public class User {
     private Long id;
+    private String nickname;
     private String username;
     private String password;
     private String salt;
+    private Integer status;
 //    private Set<Role> roles;
 //    private Set<Permission> permissions;
 }
