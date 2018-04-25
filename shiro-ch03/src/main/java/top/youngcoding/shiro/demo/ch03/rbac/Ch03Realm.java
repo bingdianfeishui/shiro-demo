@@ -18,6 +18,7 @@ import top.youngcoding.shiro.demo.ch03.service.UserService;
 
 import javax.annotation.Resource;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -42,10 +43,17 @@ public class Ch03Realm extends AuthorizingRealm {
         System.out.println(principals.asList());
         String username;
         System.out.println((username = (String) principals.getPrimaryPrincipal()));
-        User user = userService.selectByUsername(username);
-        Set<Role> roles = roleService.selectByUser(user);
-        Set<Permission> perms = permissionService.selectByUser(user);
-        roles.forEach(r -> perms.addAll(r.getPermissions()));
+
+        List<Permission> perms;
+        if ("admin".equals(username)) {
+            System.out.println("admin用户，拥有全部权限许可！！");
+            perms = permissionService.getAllPerms();
+        } else {
+            User user = userService.selectByUsername(username);
+            List<Role> roles = roleService.selectByUser(user);
+            perms = permissionService.selectByUser(user);
+            roles.forEach(r -> perms.addAll(r.getPermissions()));
+        }
         SimpleAuthorizationInfo authzInfo = new SimpleAuthorizationInfo();
         authzInfo.addStringPermissions(perms.stream().map(p -> p.getName()).collect(Collectors.toSet()));
         return authzInfo;

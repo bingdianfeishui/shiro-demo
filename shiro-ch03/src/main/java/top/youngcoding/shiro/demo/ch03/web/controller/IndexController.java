@@ -7,6 +7,7 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 /**
  * @author liy
@@ -26,5 +27,11 @@ public class IndexController {
     @GetMapping("/mainboard")
     public String mainboard() {
         return "mainboard";
+    }
+
+    @GetMapping("/admin/{str}")
+    public String admin(@PathVariable("str")String str){
+        System.out.println(str);
+        return "index";
     }
 }

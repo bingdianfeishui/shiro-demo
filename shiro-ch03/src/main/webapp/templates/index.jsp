@@ -24,6 +24,8 @@ hello ${username}
 <p/>
 <div>显示信息</div>
 <div><span style="color: red;">${msg}</span></div>
+
+<a href="/logout">/logout</a>
 <div>==============</div>
 <table>
     <thead align="center">
