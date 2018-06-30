@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Controller
 @RequestMapping("/member")
-@RequiresPermissions("member")
+@RequiresPermissions("member:*")
 public class UserController {
 
     @GetMapping("changeOnline")

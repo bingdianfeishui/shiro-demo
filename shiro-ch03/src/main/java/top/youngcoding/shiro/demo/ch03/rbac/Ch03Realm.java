@@ -52,7 +52,7 @@ public class Ch03Realm extends AuthorizingRealm {
             User user = userService.selectByUsername(username);
             List<Role> roles = roleService.selectByUser(user);
             perms = permissionService.selectByUser(user);
-            roles.forEach(r -> perms.addAll(r.getPermissions()));
+            //roles.forEach(r -> perms.addAll(r.getPermissions()));
         }
         SimpleAuthorizationInfo authzInfo = new SimpleAuthorizationInfo();
         authzInfo.addStringPermissions(perms.stream().map(p -> p.getName()).collect(Collectors.toSet()));

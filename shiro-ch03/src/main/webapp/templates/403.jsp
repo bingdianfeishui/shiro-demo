@@ -11,6 +11,8 @@
     <title>Title</title>
 </head>
 <body>
-木有权限查看该页面
+<span style="color: red;">木有权限查看该页面</span>
+<p/>
+<a href="/index">回到首页</a>
 </body>
 </html>

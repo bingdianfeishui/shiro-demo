@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServletRequest;
  * @author liy
  * @date 2018/4/25
  */
-//@Aspect
-//@Configuration
+@Aspect
+@Configuration
 public class UsernameInceptor{
 
     @Pointcut("@annotation(org.springframework.web.bind.annotation.GetMapping)")

@@ -1,8 +1,10 @@
 package top.youngcoding.shiro.demo.ch03.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import top.youngcoding.shiro.demo.ch03.dao.PermissionMapper;
 import top.youngcoding.shiro.demo.ch03.entity.Permission;
+import top.youngcoding.shiro.demo.ch03.entity.Role;
 import top.youngcoding.shiro.demo.ch03.entity.User;
 
 import javax.annotation.Resource;
@@ -18,8 +20,12 @@ public class PermissionService {
     @Resource
     private PermissionMapper permissionMapper;
 
+    @Autowired
+    private RoleService roleService;
+
     public List<Permission> selectByUser(User user) {
-        return null;
+        List<Role> roles = roleService.selectByUser(user);
+        return permissionMapper.getPermsByRoles(roles);
     }
 
     public List<Permission> getAllPerms() {
